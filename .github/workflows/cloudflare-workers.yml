@@ -1,16 +1,5 @@
-# Deploy Next.js app to Cloudflare Workers via OpenNext.
-#
-# Required GitHub Secrets:
-#   CLOUDFLARE_API_TOKEN  - API token with "Workers Scripts: Edit" permission
-#   CLOUDFLARE_ACCOUNT_ID - 26efaeb7547838ae99622136a4cb0b12
-#
-# Required GitHub Variables / Secrets for build (mirror docker-image.yml):
-#   vars.*  for NEXT_PUBLIC_* values
-#   secrets.* for DATABASE_URL, BETTER_AUTH_SECRET, R2 keys, Stripe, etc.
-#
-# One-time Worker runtime secrets (after first deploy):
-#   wrangler secret bulk .env.production
-#   Or set secrets in Cloudflare Dashboard > Workers > nexty325-tts > Settings > Variables
+# Environment secrets (production): synced from .env.local via `gh secret set -f`
+# Still required manually: CLOUDFLARE_API_TOKEN
 
 name: Deploy to Cloudflare Workers
 
@@ -27,6 +16,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    environment: production
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -58,37 +48,38 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # NEXT_PUBLIC_* — GitHub Variables
-          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
-          NEXT_PUBLIC_SITE_NAME: ${{ vars.NEXT_PUBLIC_SITE_NAME }}
-          NEXT_PUBLIC_PRICING_PATH: ${{ vars.NEXT_PUBLIC_PRICING_PATH }}
-          NEXT_PUBLIC_OPTIMIZED_IMAGES: ${{ vars.NEXT_PUBLIC_OPTIMIZED_IMAGES }}
-          NEXT_PUBLIC_LOGIN_MODE: ${{ vars.NEXT_PUBLIC_LOGIN_MODE }}
-          NEXT_PUBLIC_LOCALE_DETECTION: ${{ vars.NEXT_PUBLIC_LOCALE_DETECTION }}
-          NEXT_PUBLIC_GITHUB_CLIENT_ID: ${{ vars.NEXT_PUBLIC_GITHUB_CLIENT_ID }}
-          NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${{ vars.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
-          NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
-          NEXT_PUBLIC_ENABLE_STRIPE: ${{ vars.NEXT_PUBLIC_ENABLE_STRIPE }}
-          NEXT_PUBLIC_DEFAULT_CURRENCY: ${{ vars.NEXT_PUBLIC_DEFAULT_CURRENCY }}
-          NEXT_PUBLIC_GOOGLE_ID: ${{ vars.NEXT_PUBLIC_GOOGLE_ID }}
-          NEXT_PUBLIC_PLAUSIBLE_DOMAIN: ${{ vars.NEXT_PUBLIC_PLAUSIBLE_DOMAIN }}
-          NEXT_PUBLIC_PLAUSIBLE_SRC: ${{ vars.NEXT_PUBLIC_PLAUSIBLE_SRC }}
-          NEXT_PUBLIC_DISCORD_INVITE_URL: ${{ vars.NEXT_PUBLIC_DISCORD_INVITE_URL }}
-          NEXT_PUBLIC_AUTO_FILL_AI_PROVIDER: ${{ vars.NEXT_PUBLIC_AUTO_FILL_AI_PROVIDER }}
-          NEXT_PUBLIC_AUTO_FILL_AI_MODEL_ID: ${{ vars.NEXT_PUBLIC_AUTO_FILL_AI_MODEL_ID }}
-          NEXT_PUBLIC_DAILY_AI_AUTO_FILL_LIMIT: ${{ vars.NEXT_PUBLIC_DAILY_AI_AUTO_FILL_LIMIT }}
-          NEXT_PUBLIC_DAILY_SUBMIT_LIMIT: ${{ vars.NEXT_PUBLIC_DAILY_SUBMIT_LIMIT }}
-          NEXT_PUBLIC_DAILY_IMAGE_UPLOAD_LIMIT: ${{ vars.NEXT_PUBLIC_DAILY_IMAGE_UPLOAD_LIMIT }}
-          NEXT_PUBLIC_CLARITY_PROJECT_ID: ${{ vars.NEXT_PUBLIC_CLARITY_PROJECT_ID }}
-          NEXT_PUBLIC_UMAMI_SRC: ${{ vars.NEXT_PUBLIC_UMAMI_SRC }}
-          NEXT_PUBLIC_UMAMI_WEBSITE_ID: ${{ vars.NEXT_PUBLIC_UMAMI_WEBSITE_ID }}
-          NEXT_PUBLIC_POSTHOG_HOST: ${{ vars.NEXT_PUBLIC_POSTHOG_HOST }}
-          NEXT_PUBLIC_POSTHOG_KEY: ${{ vars.NEXT_PUBLIC_POSTHOG_KEY }}
-          NEXT_PUBLIC_BETTER_AUTH_URL: ${{ vars.NEXT_PUBLIC_BETTER_AUTH_URL }}
-          # Runtime / build secrets
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+          NEXT_PUBLIC_SITE_NAME: ${{ secrets.NEXT_PUBLIC_SITE_NAME }}
+          NEXT_PUBLIC_PRICING_PATH: ${{ secrets.NEXT_PUBLIC_PRICING_PATH }}
+          NEXT_PUBLIC_OPTIMIZED_IMAGES: ${{ secrets.NEXT_PUBLIC_OPTIMIZED_IMAGES }}
+          NEXT_PUBLIC_LOGIN_MODE: ${{ secrets.NEXT_PUBLIC_LOGIN_MODE }}
+          NEXT_PUBLIC_LOCALE_DETECTION: ${{ secrets.NEXT_PUBLIC_LOCALE_DETECTION }}
+          NEXT_PUBLIC_COOKIE_CONSENT_ENABLED: ${{ secrets.NEXT_PUBLIC_COOKIE_CONSENT_ENABLED }}
+          NEXT_PUBLIC_USER_SOURCE_TRACKING_ENABLED: ${{ secrets.NEXT_PUBLIC_USER_SOURCE_TRACKING_ENABLED }}
+          NEXT_PUBLIC_RATE_LIMIT_ENABLED: ${{ secrets.NEXT_PUBLIC_RATE_LIMIT_ENABLED }}
+          NEXT_PUBLIC_EMAIL_NORMALIZATION_ENABLED: ${{ secrets.NEXT_PUBLIC_EMAIL_NORMALIZATION_ENABLED }}
+          NEXT_PUBLIC_GITHUB_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_GITHUB_CLIENT_ID }}
+          NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
+          NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ secrets.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
+          NEXT_PUBLIC_ENABLE_STRIPE: ${{ secrets.NEXT_PUBLIC_ENABLE_STRIPE }}
+          NEXT_PUBLIC_DEFAULT_CURRENCY: ${{ secrets.NEXT_PUBLIC_DEFAULT_CURRENCY }}
+          NEXT_PUBLIC_GOOGLE_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ID }}
+          NEXT_PUBLIC_PLAUSIBLE_DOMAIN: ${{ secrets.NEXT_PUBLIC_PLAUSIBLE_DOMAIN }}
+          NEXT_PUBLIC_PLAUSIBLE_SRC: ${{ secrets.NEXT_PUBLIC_PLAUSIBLE_SRC }}
+          NEXT_PUBLIC_DISCORD_INVITE_URL: ${{ secrets.NEXT_PUBLIC_DISCORD_INVITE_URL }}
+          NEXT_PUBLIC_AI_MODEL_ID: ${{ secrets.NEXT_PUBLIC_AI_MODEL_ID }}
+          NEXT_PUBLIC_AI_PROVIDER: ${{ secrets.NEXT_PUBLIC_AI_PROVIDER }}
+          NEXT_PUBLIC_RYBBIT_SESSION_REPLAY: ${{ secrets.NEXT_PUBLIC_RYBBIT_SESSION_REPLAY }}
+          NEXT_PUBLIC_RYBBIT_REPLAY_MASK_SELECTORS: ${{ secrets.NEXT_PUBLIC_RYBBIT_REPLAY_MASK_SELECTORS }}
+          NEXT_PUBLIC_CLARITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_CLARITY_PROJECT_ID }}
+          NEXT_PUBLIC_UMAMI_SRC: ${{ secrets.NEXT_PUBLIC_UMAMI_SRC }}
+          NEXT_PUBLIC_UMAMI_WEBSITE_ID: ${{ secrets.NEXT_PUBLIC_UMAMI_WEBSITE_ID }}
+          NEXT_PUBLIC_POSTHOG_HOST: ${{ secrets.NEXT_PUBLIC_POSTHOG_HOST }}
+          NEXT_PUBLIC_POSTHOG_KEY: ${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}
+          NEXT_PUBLIC_BETTER_AUTH_URL: ${{ secrets.NEXT_PUBLIC_BETTER_AUTH_URL }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
-          BETTER_AUTH_GITHUB_CLIENT_SECRET: ${{ secrets.BETTER_AUTH_GITHUB_CLIENT_SECRET }}
+          BETTER_AUTH_GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
           R2_PUBLIC_URL: ${{ secrets.R2_PUBLIC_URL }}
@@ -100,17 +91,19 @@ jobs:
           STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
           STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
           STRIPE_CUSTOMER_PORTAL_URL: ${{ secrets.STRIPE_CUSTOMER_PORTAL_URL }}
+          STRIPE_RADAR_EARLY_FRAUD_WARNING_TYPE: ${{ secrets.STRIPE_RADAR_EARLY_FRAUD_WARNING_TYPE }}
+          CREEM_API_BASE_URL: ${{ secrets.CREEM_API_BASE_URL }}
           CREEM_API_KEY: ${{ secrets.CREEM_API_KEY }}
           CREEM_WEBHOOK_SECRET: ${{ secrets.CREEM_WEBHOOK_SECRET }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
           ADMIN_NAME: ${{ secrets.ADMIN_NAME }}
-          UPSTASH_REDIS_REST_URL: ${{ vars.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
           UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           PLAUSIBLE_API_KEY: ${{ secrets.PLAUSIBLE_API_KEY }}
           PLAUSIBLE_URL: ${{ secrets.PLAUSIBLE_URL }}
-          DISCORD_SUBMIT_WEBHOOK_URL: ${{ secrets.DISCORD_SUBMIT_WEBHOOK_URL }}
+          DISCORD_SUBMIT_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
 
       - name: Sync Worker runtime secrets
@@ -120,7 +113,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
-          BETTER_AUTH_GITHUB_CLIENT_SECRET: ${{ secrets.BETTER_AUTH_GITHUB_CLIENT_SECRET }}
+          BETTER_AUTH_GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
