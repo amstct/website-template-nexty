@@ -1,0 +1,230 @@
+{
+  "Hero": {
+    "badge": {
+      "label": "NEW",
+      "text": "AI Text to Speech",
+      "href": "/#features"
+    },
+    "title": "Convert Text to Natural AI Speech in Seconds",
+    "description": "VoiceForge is a powerful AI text-to-speech (TTS) platform. Transform any text into lifelike audio with 50+ natural voices across 30+ languages. Perfect for video narration, audiobooks, podcasts, and accessibility.",
+    "getStarted": "Try Free",
+    "getStartedLink": "/#pricing",
+    "tryDemo": "Try Demo",
+    "tryDemoLink": "/ai-demo"
+  },
+  "Features": {
+    "badge": {
+      "label": "FEATURES",
+      "text": "Professional AI Voice Synthesis"
+    },
+    "title": "Everything You Need for Text to Speech",
+    "description": "VoiceForge delivers studio-quality AI voice synthesis with an intuitive interface. No technical skills required — just type, choose a voice, and download your audio.",
+    "items": [
+      {
+        "title": "Natural AI Voices",
+        "description": "Choose from 50+ lifelike AI voices powered by state-of-the-art neural TTS models. Each voice delivers human-like intonation, emotion, and clarity.",
+        "details": [
+          {
+            "title": "Neural Voice Engine",
+            "description": "Advanced deep learning models produce speech indistinguishable from human recordings."
+          },
+          {
+            "title": "Emotion & Tone Control",
+            "description": "Adjust speaking style — cheerful, calm, professional, or dramatic — to match your content."
+          },
+          {
+            "title": "Voice Preview",
+            "description": "Listen to samples before generating, so you always pick the perfect voice."
+          }
+        ],
+        "images": ["/images/features/ai-1.png"]
+      },
+      {
+        "title": "30+ Languages Supported",
+        "description": "Generate speech in over 30 languages with native-accent pronunciation. Reach global audiences with a single tool.",
+        "details": [
+          {
+            "title": "Multi-language TTS",
+            "description": "English, Chinese, Japanese, Spanish, French, German, Korean, and many more."
+          },
+          {
+            "title": "Native Accents",
+            "description": "Regional accent options including US, UK, Australian English and Mandarin variants."
+          },
+          {
+            "title": "Mixed-language Support",
+            "description": "Handle multilingual content seamlessly within a single audio file."
+          }
+        ],
+        "images": ["/images/features/other-1.png"]
+      },
+      {
+        "title": "Lightning-Fast Generation",
+        "description": "Convert thousands of words to audio in seconds. Our optimized TTS pipeline delivers results faster than real-time playback.",
+        "details": [
+          {
+            "title": "Instant Processing",
+            "description": "Short texts are converted in under 3 seconds. Long documents are processed in batches automatically."
+          },
+          {
+            "title": "Batch Conversion",
+            "description": "Upload long articles or scripts and get complete audio files without manual splitting."
+          },
+          {
+            "title": "Cloud-powered",
+            "description": "Scalable infrastructure handles peak demand without quality degradation."
+          }
+        ],
+        "images": ["/images/features/ai-2.png"]
+      },
+      {
+        "title": "Flexible Audio Export",
+        "description": "Download your generated speech in multiple formats. High-quality output ready for any platform or workflow.",
+        "details": [
+          {
+            "title": "MP3 & WAV Export",
+            "description": "Export in MP3 for web and social media, or lossless WAV for professional production."
+          },
+          {
+            "title": "Adjustable Speed & Pitch",
+            "description": "Fine-tune playback speed from 0.5x to 2x and adjust pitch to match your needs."
+          },
+          {
+            "title": "SSML Support",
+            "description": "Advanced users can use SSML tags for precise control over pauses, emphasis, and pronunciation."
+          }
+        ],
+        "images": ["/images/features/other-2.png"]
+      },
+      {
+        "title": "Developer API",
+        "description": "Integrate VoiceForge TTS into your own applications with our simple REST API. Build voice-enabled products at scale.",
+        "details": [
+          {
+            "title": "REST API Access",
+            "description": "Simple HTTP endpoints for text-to-speech conversion with JSON responses."
+          },
+          {
+            "title": "Webhook Notifications",
+            "description": "Get notified when long audio generation jobs complete via webhooks."
+          },
+          {
+            "title": "Usage Analytics",
+            "description": "Track API usage, character counts, and costs from your dashboard."
+          }
+        ],
+        "images": ["/images/features/other-3.png"]
+      },
+      {
+        "title": "Secure & Private",
+        "description": "Your text and audio files are encrypted in transit and at rest. We never use your content to train models.",
+        "details": [
+          {
+            "title": "End-to-end Encryption",
+            "description": "All data is encrypted with TLS 1.3 in transit and AES-256 at rest."
+          },
+          {
+            "title": "No Data Training",
+            "description": "Your content is never used to train or improve AI models."
+          },
+          {
+            "title": "Auto-delete Policy",
+            "description": "Generated audio files are automatically deleted after 30 days unless saved."
+          }
+        ],
+        "images": ["/images/features/login.png"]
+      }
+    ]
+  },
+  "UseCases": {
+    "badge": {
+      "label": "USE CASES",
+      "text": "TTS for Every Scenario"
+    },
+    "title": "Text to Speech for Every Creator",
+    "description": "Whether you're a content creator, educator, or developer, VoiceForge adapts to your workflow with professional-quality AI voice synthesis.",
+    "cases": [
+      {
+        "title": "Video Narration & YouTube",
+        "description": "Add professional voiceovers to your videos without hiring voice actors. Generate narration for tutorials, explainers, and social media content in minutes. Supports long-form scripts with consistent voice quality throughout.",
+        "image": "/placeholder.webp",
+        "icon": "Video"
+      },
+      {
+        "title": "Audiobooks & Podcasts",
+        "description": "Transform written content into engaging audiobooks and podcast episodes. Batch-convert entire books chapter by chapter with the same narrator voice. Export in broadcast-ready quality.",
+        "image": "/placeholder.webp",
+        "icon": "Headphones"
+      },
+      {
+        "title": "E-Learning & Education",
+        "description": "Create accessible learning materials with clear, natural narration. Convert course scripts, lecture notes, and study guides into audio for students who learn better by listening.",
+        "image": "/placeholder.webp",
+        "icon": "GraduationCap"
+      },
+      {
+        "title": "Accessibility & Assistive Tech",
+        "description": "Make content accessible to visually impaired users and those with reading difficulties. Integrate our TTS API into apps, websites, and assistive devices for real-time speech synthesis.",
+        "image": "/placeholder.webp",
+        "icon": "Accessibility"
+      }
+    ]
+  },
+  "Testimonials": {
+    "badge": {
+      "label": "TESTIMONIALS"
+    },
+    "title": "Trusted by Creators Worldwide",
+    "description": "See how creators use VoiceForge to bring their content to life"
+  },
+  "FAQ": {
+    "title": "Frequently Asked Questions",
+    "description": "Everything you need to know about VoiceForge AI text-to-speech",
+    "items": [
+      {
+        "question": "What is text-to-speech (TTS) and how does VoiceForge work?",
+        "answer": "Text-to-speech (TTS) is technology that converts written text into spoken audio. VoiceForge uses advanced AI neural networks to analyze your text and generate natural-sounding speech. Simply paste your text, select a voice and language, then download the audio file."
+      },
+      {
+        "question": "How many languages and voices does VoiceForge support?",
+        "answer": "VoiceForge supports 30+ languages including English, Chinese, Japanese, Spanish, French, German, Korean, and more. We offer 50+ unique AI voices with different genders, ages, and speaking styles to match any content type."
+      },
+      {
+        "question": "What audio formats can I export?",
+        "answer": "You can export generated speech as MP3 (ideal for web, social media, and mobile) or WAV (lossless quality for professional audio production). Both formats support adjustable bitrate settings on paid plans."
+      },
+      {
+        "question": "Is there a free trial for VoiceForge TTS?",
+        "answer": "Yes! New users receive free credits to try VoiceForge. You can convert up to 5,000 characters per month on the free plan. Upgrade to a paid plan for higher limits, premium voices, and API access."
+      },
+      {
+        "question": "Can I use VoiceForge audio for commercial projects?",
+        "answer": "Yes. All audio generated on paid plans comes with a commercial use license. You can use the audio in YouTube videos, podcasts, audiobooks, advertisements, and any other commercial project without attribution."
+      },
+      {
+        "question": "How is VoiceForge different from other TTS tools?",
+        "answer": "VoiceForge combines cutting-edge neural TTS with an intuitive interface and developer-friendly API. Unlike robotic legacy TTS, our AI voices sound natural with proper intonation and emotion. We also offer SSML support, batch processing, and 30+ languages in one platform."
+      },
+      {
+        "question": "Does VoiceForge offer an API for developers?",
+        "answer": "Yes. Our REST API lets developers integrate text-to-speech into any application. Send text via HTTP request and receive audio URLs in response. API documentation, SDKs, and webhook support are available on Pro and Enterprise plans."
+      },
+      {
+        "question": "Is my text data safe and private?",
+        "answer": "Absolutely. All text and audio is encrypted in transit (TLS 1.3) and at rest (AES-256). We never use your content to train AI models. Generated files are auto-deleted after 30 days unless you explicitly save them to your account."
+      }
+    ]
+  },
+  "CTA": {
+    "title": "Start Converting Text to Speech Today",
+    "description": "Join thousands of creators using VoiceForge to produce professional AI voiceovers. Free trial — no credit card required.",
+    "button": "Get Started Free",
+    "trustText": "Trusted by 10,000+ creators worldwide",
+    "features": {
+      "deploy": "🎙️ 50+ AI Voices",
+      "production": "🌍 30+ Languages",
+      "updates": "⚡ Instant Generation",
+      "i18n": "🔒 Private & Secure"
+    }
+  }
+}

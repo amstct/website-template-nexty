@@ -1,0 +1,230 @@
+{
+  "Hero": {
+    "badge": {
+      "label": "新品",
+      "text": "AI 文字转语音",
+      "href": "/#features"
+    },
+    "title": "秒级将文字转换为自然 AI 语音",
+    "description": "VoiceForge 是一款强大的 AI 文字转语音（TTS）平台。支持 50+ 自然音色、30+ 语言，一键生成逼真语音。适用于视频配音、有声书、播客制作与无障碍阅读。",
+    "getStarted": "免费试用",
+    "getStartedLink": "/#pricing",
+    "tryDemo": "在线体验",
+    "tryDemoLink": "/ai-demo"
+  },
+  "Features": {
+    "badge": {
+      "label": "核心功能",
+      "text": "专业 AI 语音合成"
+    },
+    "title": "文字转语音所需的一切",
+    "description": "VoiceForge 提供工作室级 AI 语音合成，界面简洁易用。无需技术背景，输入文字、选择音色、下载音频，三步完成。",
+    "items": [
+      {
+        "title": "自然 AI 音色",
+        "description": "50+ 逼真 AI 音色，基于前沿神经网络 TTS 模型。每种音色都具备接近真人的语调、情感与清晰度。",
+        "details": [
+          {
+            "title": "神经网络引擎",
+            "description": "先进深度学习模型，生成媲美真人录音的语音效果。"
+          },
+          {
+            "title": "情感与语调控制",
+            "description": "支持欢快、沉稳、专业、戏剧等多种说话风格，匹配不同内容场景。"
+          },
+          {
+            "title": "音色试听",
+            "description": "生成前可试听样本，确保选择最合适的音色。"
+          }
+        ],
+        "images": ["/images/features/ai-1.png"]
+      },
+      {
+        "title": "支持 30+ 语言",
+        "description": "30 多种语言均支持母语级发音，一套工具覆盖全球受众。",
+        "details": [
+          {
+            "title": "多语言 TTS",
+            "description": "支持中文、英语、日语、西班牙语、法语、德语、韩语等。"
+          },
+          {
+            "title": "地道口音",
+            "description": "提供美式、英式、澳式英语及普通话、粤语等口音选项。"
+          },
+          {
+            "title": "混合语言",
+            "description": "同一音频文件中无缝处理多语言内容。"
+          }
+        ],
+        "images": ["/images/features/other-1.png"]
+      },
+      {
+        "title": "极速生成",
+        "description": "数千字文本秒级转语音。优化的 TTS 管线，生成速度超过实时播放。",
+        "details": [
+          {
+            "title": "即时处理",
+            "description": "短文本 3 秒内完成。长文档自动分批处理。"
+          },
+          {
+            "title": "批量转换",
+            "description": "上传长文章或脚本，自动输出完整音频，无需手动分段。"
+          },
+          {
+            "title": "云端算力",
+            "description": "弹性基础设施应对高峰需求，品质始终如一。"
+          }
+        ],
+        "images": ["/images/features/ai-2.png"]
+      },
+      {
+        "title": "灵活音频导出",
+        "description": "多种格式下载，高品质输出适配任意平台与工作流。",
+        "details": [
+          {
+            "title": "MP3 与 WAV 导出",
+            "description": "MP3 适合网络与社交媒体，无损 WAV 适合专业制作。"
+          },
+          {
+            "title": "语速与音调调节",
+            "description": "语速 0.5x–2x 可调，音调自由微调。"
+          },
+          {
+            "title": "SSML 支持",
+            "description": "高级用户可使用 SSML 标签精确控制停顿、重音与发音。"
+          }
+        ],
+        "images": ["/images/features/other-2.png"]
+      },
+      {
+        "title": "开发者 API",
+        "description": "通过简洁 REST API 将 VoiceForge TTS 集成到自有应用，规模化构建语音产品。",
+        "details": [
+          {
+            "title": "REST API",
+            "description": "简洁 HTTP 接口，JSON 响应，轻松完成文字转语音。"
+          },
+          {
+            "title": "Webhook 通知",
+            "description": "长音频任务完成后通过 Webhook 主动通知。"
+          },
+          {
+            "title": "用量分析",
+            "description": "在控制台追踪 API 调用、字符数与费用。"
+          }
+        ],
+        "images": ["/images/features/other-3.png"]
+      },
+      {
+        "title": "安全与隐私",
+        "description": "文本与音频全程加密传输与存储，您的内容绝不用于模型训练。",
+        "details": [
+          {
+            "title": "端到端加密",
+            "description": "传输 TLS 1.3，存储 AES-256 加密。"
+          },
+          {
+            "title": "不用于训练",
+            "description": "您的内容绝不会被用于训练或改进 AI 模型。"
+          },
+          {
+            "title": "自动清理",
+            "description": "生成音频 30 天后自动删除，除非手动保存。"
+          }
+        ],
+        "images": ["/images/features/login.png"]
+      }
+    ]
+  },
+  "UseCases": {
+    "badge": {
+      "label": "使用场景",
+      "text": "全场景 TTS 解决方案"
+    },
+    "title": "为每位创作者打造的文字转语音",
+    "description": "无论你是内容创作者、教育工作者还是开发者，VoiceForge 都能以专业级 AI 语音合成适配你的工作流。",
+    "cases": [
+      {
+        "title": "视频配音与 YouTube",
+        "description": "无需聘请配音演员，为视频添加专业旁白。几分钟内为教程、解说和社交媒体内容生成配音，长脚本全程音色一致。",
+        "image": "/placeholder.webp",
+        "icon": "Video"
+      },
+      {
+        "title": "有声书与播客",
+        "description": "将文字内容转化为引人入胜的有声书与播客。按章节批量转换整本书，同一旁白音色，广播级音质导出。",
+        "image": "/placeholder.webp",
+        "icon": "Headphones"
+      },
+      {
+        "title": "在线教育",
+        "description": "用清晰自然的旁白制作无障碍学习材料。将课程脚本、讲义与复习资料转为音频，服务偏好听觉学习的学生。",
+        "image": "/placeholder.webp",
+        "icon": "GraduationCap"
+      },
+      {
+        "title": "无障碍与辅助技术",
+        "description": "为视障用户与阅读障碍者提供无障碍内容。将 TTS API 集成到应用、网站与辅助设备，实现实时语音合成。",
+        "image": "/placeholder.webp",
+        "icon": "Accessibility"
+      }
+    ]
+  },
+  "Testimonials": {
+    "badge": {
+      "label": "用户评价"
+    },
+    "title": "全球创作者的选择",
+    "description": "看看创作者如何用 VoiceForge 让内容活起来"
+  },
+  "FAQ": {
+    "title": "常见问题",
+    "description": "关于 VoiceForge AI 文字转语音，你想知道的一切",
+    "items": [
+      {
+        "question": "什么是文字转语音（TTS）？VoiceForge 如何工作？",
+        "answer": "文字转语音（TTS）是将书面文字转换为语音音频的技术。VoiceForge 使用先进 AI 神经网络分析文本并生成自然语音。只需粘贴文字、选择音色与语言，即可下载音频文件。"
+      },
+      {
+        "question": "VoiceForge 支持多少种语言和音色？",
+        "answer": "VoiceForge 支持 30+ 语言，包括中文、英语、日语、西班牙语、法语、德语、韩语等。提供 50+ 独特 AI 音色，涵盖不同性别、年龄与说话风格，适配各类内容。"
+      },
+      {
+        "question": "可以导出哪些音频格式？",
+        "answer": "支持 MP3（适合网络、社交媒体与移动端）和 WAV（无损品质，适合专业音频制作）。付费方案还支持可调节码率。"
+      },
+      {
+        "question": "VoiceForge 有免费试用吗？",
+        "answer": "有的！新用户注册即获赠免费额度，免费方案每月可转换 5,000 字符。升级付费方案可获得更高额度、高级音色与 API 访问权限。"
+      },
+      {
+        "question": "生成的音频可以用于商业项目吗？",
+        "answer": "可以。付费方案生成的音频均附带商业使用授权，可用于 YouTube 视频、播客、有声书、广告等任何商业项目，无需署名。"
+      },
+      {
+        "question": "VoiceForge 与其他 TTS 工具有何不同？",
+        "answer": "VoiceForge 将前沿神经 TTS 与直观界面、开发者友好 API 结合。相比传统机械感 TTS，我们的 AI 音色自然流畅、富有情感。同时提供 SSML 支持、批量处理与 30+ 语言一站式方案。"
+      },
+      {
+        "question": "VoiceForge 提供开发者 API 吗？",
+        "answer": "提供。REST API 让开发者将文字转语音集成到任意应用。发送 HTTP 请求即可获取音频 URL。Pro 与 Enterprise 方案提供完整 API 文档、SDK 与 Webhook 支持。"
+      },
+      {
+        "question": "我的文字数据安全吗？",
+        "answer": "绝对安全。所有文本与音频传输加密（TLS 1.3），存储加密（AES-256）。您的内容绝不用于训练 AI 模型。生成文件 30 天后自动删除，除非手动保存到账户。"
+      }
+    ]
+  },
+  "CTA": {
+    "title": "立即开始文字转语音",
+    "description": "加入数千名创作者，用 VoiceForge 制作专业 AI 配音。免费试用，无需信用卡。",
+    "button": "免费开始",
+    "trustText": "全球 10,000+ 创作者信赖",
+    "features": {
+      "deploy": "🎙️ 50+ AI 音色",
+      "production": "🌍 30+ 语言",
+      "updates": "⚡ 极速生成",
+      "i18n": "🔒 安全私密"
+    }
+  }
+}

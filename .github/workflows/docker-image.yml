@@ -1,0 +1,105 @@
+name: Create and publish a Docker image
+ 
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+ 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+ 
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+ 
+      - name: Build and push Docker image
+        id: push
+        timeout-minutes: 25
+        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          # ⚠️
+          # 建议只填写构建需要的环境变量
+          # NEXT_PUBLIC_ 开头的环境变量使用 vars
+          # 其他环境变量使用 secrets
+          build-args: |
+            NEXT_PUBLIC_SITE_URL=${{ vars.NEXT_PUBLIC_SITE_URL }}
+            NEXT_PUBLIC_PRICING_PATH=${{ vars.NEXT_PUBLIC_PRICING_PATH }}
+            NEXT_PUBLIC_OPTIMIZED_IMAGES=${{ vars.NEXT_PUBLIC_OPTIMIZED_IMAGES }}
+            NEXT_PUBLIC_LOGIN_MODE=${{ vars.NEXT_PUBLIC_LOGIN_MODE }}
+            NEXT_PUBLIC_GITHUB_CLIENT_ID=${{ vars.NEXT_PUBLIC_GITHUB_CLIENT_ID }}
+            NEXT_PUBLIC_GOOGLE_CLIENT_ID=${{ vars.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
+            NEXT_PUBLIC_TURNSTILE_SITE_KEY=${{ vars.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
+            NEXT_PUBLIC_ENABLE_STRIPE=${{ vars.NEXT_PUBLIC_ENABLE_STRIPE }}
+            NEXT_PUBLIC_DEFAULT_CURRENCY=${{ vars.NEXT_PUBLIC_DEFAULT_CURRENCY }}
+            NEXT_PUBLIC_GOOGLE_ID=${{ vars.NEXT_PUBLIC_GOOGLE_ID }}
+            NEXT_PUBLIC_PLAUSIBLE_DOMAIN=${{ vars.NEXT_PUBLIC_PLAUSIBLE_DOMAIN }}
+            NEXT_PUBLIC_PLAUSIBLE_SRC=${{ vars.NEXT_PUBLIC_PLAUSIBLE_SRC }}
+            NEXT_PUBLIC_DISCORD_INVITE_URL=${{ vars.NEXT_PUBLIC_DISCORD_INVITE_URL }}
+            NEXT_PUBLIC_AUTO_FILL_AI_PROVIDER=${{ vars.NEXT_PUBLIC_AUTO_FILL_AI_PROVIDER }}
+            NEXT_PUBLIC_AUTO_FILL_AI_MODEL_ID=${{ vars.NEXT_PUBLIC_AUTO_FILL_AI_MODEL_ID }}
+            NEXT_PUBLIC_DAILY_AI_AUTO_FILL_LIMIT=${{ vars.NEXT_PUBLIC_DAILY_AI_AUTO_FILL_LIMIT }}
+            NEXT_PUBLIC_DAILY_SUBMIT_LIMIT=${{ vars.NEXT_PUBLIC_DAILY_SUBMIT_LIMIT }}
+            NEXT_PUBLIC_DAILY_IMAGE_UPLOAD_LIMIT=${{ vars.NEXT_PUBLIC_DAILY_IMAGE_UPLOAD_LIMIT }}
+            R2_PUBLIC_URL=${{ secrets.R2_PUBLIC_URL }}
+            R2_ACCOUNT_ID=${{ secrets.R2_ACCOUNT_ID }}
+            R2_ACCESS_KEY_ID=${{ secrets.R2_ACCESS_KEY_ID }}
+            R2_SECRET_ACCESS_KEY=${{ secrets.R2_SECRET_ACCESS_KEY }}
+            R2_BUCKET_NAME=${{ secrets.R2_BUCKET_NAME }}
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
+            BETTER_AUTH_SECRET=${{ secrets.BETTER_AUTH_SECRET }}
+            BETTER_AUTH_GITHUB_CLIENT_SECRET=${{ secrets.BETTER_AUTH_GITHUB_CLIENT_SECRET }}
+            GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}
+            STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }}
+            STRIPE_PUBLISHABLE_KEY=${{ secrets.STRIPE_PUBLISHABLE_KEY }}
+            STRIPE_WEBHOOK_SECRET=${{ secrets.STRIPE_WEBHOOK_SECRET }}
+            STRIPE_CUSTOMER_PORTAL_URL=${{ secrets.STRIPE_CUSTOMER_PORTAL_URL }}
+            RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
+            ADMIN_EMAIL=${{ secrets.ADMIN_EMAIL }}
+            ADMIN_NAME=${{ secrets.ADMIN_NAME }}
+            UPSTASH_REDIS_REST_URL=${{ vars.UPSTASH_REDIS_REST_URL }}
+            UPSTASH_REDIS_REST_TOKEN=${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+            OPENROUTER_API_KEY=${{ secrets.OPENROUTER_API_KEY }}
+            PLAUSIBLE_API_KEY=${{ secrets.PLAUSIBLE_API_KEY }}
+            PLAUSIBLE_URL=${{ secrets.PLAUSIBLE_URL }}
+            DISCORD_SUBMIT_WEBHOOK_URL=${{ secrets.DISCORD_SUBMIT_WEBHOOK_URL }}
+            FIRECRAWL_API_KEY=${{ secrets.FIRECRAWL_API_KEY }}
+            NEXT_PUBLIC_CLARITY_PROJECT_ID=${{ vars.NEXT_PUBLIC_CLARITY_PROJECT_ID }}  
+            NEXT_PUBLIC_UMAMI_SRC=${{ vars.NEXT_PUBLIC_UMAMI_SRC }}
+            NEXT_PUBLIC_UMAMI_WEBSITE_ID=${{ vars.NEXT_PUBLIC_UMAMI_WEBSITE_ID }}
+            NEXT_PUBLIC_POSTHOG_HOST=${{ vars.NEXT_PUBLIC_POSTHOG_HOST }}
+            NEXT_PUBLIC_POSTHOG_KEY=${{ vars.NEXT_PUBLIC_POSTHOG_KEY }}
+            
+ 
+      # 已弃用：从 Dokploy 0.25.10 开始不再需要此步骤。如果代码中仍存在下列代码，请将其删除。
+      # - name: Trigger dokploy redeploy
+      #   run: |
+      #     curl -X GET "https://xxxxxxx"
