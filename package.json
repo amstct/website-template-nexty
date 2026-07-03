@@ -18,7 +18,12 @@
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "db:seed": "tsx lib/db/seed/index.ts",
-    "db:export-pricing": "tsx lib/db/seed/export.ts"
+    "db:export-pricing": "tsx lib/db/seed/export.ts",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf:upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^1.2.6",
@@ -159,6 +164,7 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.17.1",
     "@tailwindcss/postcss": "^4.1.16",
     "@types/node": "^20",
     "@types/pg": "^8.15.5",
@@ -171,6 +177,7 @@
     "prettier": "^3.6.2",
     "tailwindcss": "^4.1.16",
     "tsx": "^4.20.5",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.74.0"
   }
 }

@@ -79,6 +79,7 @@ web_modules/
 .env
 .env.local
 .env.test
+.dev.vars
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -86,6 +87,8 @@ web_modules/
 
 # Next.js build output
 .next
+.open-next
+.wrangler
 out
 
 # Nuxt.js build / generate output

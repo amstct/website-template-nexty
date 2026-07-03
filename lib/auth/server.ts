@@ -2,7 +2,7 @@ import 'server-only';
 
 import { auth } from "@/lib/auth";
 import { db } from '@/lib/db';
-import { tryGetSiteId } from '@/lib/db/site-context';
+import { tryGetSiteId, getSiteId } from '@/lib/db/site-context';
 import { user as userSchema } from '@/lib/db/schema';
 import { withTimeout } from '@/lib/timeout';
 import { and, eq } from 'drizzle-orm';

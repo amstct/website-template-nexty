@@ -7,6 +7,12 @@ type ApiResponse<T = any> = {
   status?: number;
 };
 
+export type ApiResponseBody<T = any> = {
+  success: boolean;
+  data?: T;
+  error?: string;
+};
+
 const createResponse = <T>(data: ApiResponse<T>, status: number) => {
   return NextResponse.json(data, { status });
 };

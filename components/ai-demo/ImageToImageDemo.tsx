@@ -1,5 +1,6 @@
 "use client";
 
+import type { ApiResponseBody } from "@/lib/api-response";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -108,7 +109,7 @@ export default function ImageToImageDemo() {
         }),
       });
 
-      const result = await response.json();
+      const result = (await response.json()) as ApiResponseBody;
 
       if (!response.ok) {
         throw new Error(

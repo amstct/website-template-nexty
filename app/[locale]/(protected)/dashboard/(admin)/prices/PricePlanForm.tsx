@@ -4,6 +4,7 @@ import {
   createPricingPlanAction,
   updatePricingPlanAction,
 } from "@/actions/prices/admin";
+import type { ApiResponseBody } from "@/lib/api-response";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -262,7 +263,7 @@ export function PricePlanForm({ initialData, planId }: PricePlanFormProps) {
     setIsFetchingCoupons(true);
     try {
       const response = await fetch(`/api/admin/stripe/coupons`);
-      const result = await response.json();
+      const result = (await response.json()) as ApiResponseBody;
       if (!response.ok) {
         throw new Error(result.error || "Failed to fetch coupons.");
       }
@@ -303,7 +304,7 @@ export function PricePlanForm({ initialData, planId }: PricePlanFormProps) {
         body: JSON.stringify({ priceId, environment }),
       });
 
-      const result = await response.json();
+      const result = (await response.json()) as ApiResponseBody;
 
       if (!response.ok) {
         throw new Error(result.error || t("verifyStripeError"));
@@ -379,7 +380,7 @@ export function PricePlanForm({ initialData, planId }: PricePlanFormProps) {
         body: JSON.stringify({ productId, environment }),
       });
 
-      const result = await response.json();
+      const result = (await response.json()) as ApiResponseBody;
 
       if (!response.ok) {
         throw new Error(result.error || "Failed to verify Creem product");
@@ -453,7 +454,7 @@ export function PricePlanForm({ initialData, planId }: PricePlanFormProps) {
         body: JSON.stringify({ discountCode, environment }),
       });
 
-      const result = await response.json();
+      const result = (await response.json()) as ApiResponseBody;
 
       if (!response.ok) {
         throw new Error(result.error || "Failed to verify Creem discount code");

@@ -56,7 +56,10 @@ async function creemRequest<T>(
   if (!response.ok) {
     let errorMessage = `Creem API responded with status ${response.status}`;
     try {
-      const errorBody = await response.clone().json();
+      const errorBody = (await response.clone().json()) as {
+        error?: { message?: string };
+        message?: string | string[];
+      };
       if (errorBody?.error?.message) {
         errorMessage = errorBody.error.message;
       } else if (errorBody?.message) {

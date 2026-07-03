@@ -1,5 +1,6 @@
 "use client";
 
+import type { ApiResponseBody } from "@/lib/api-response";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useUserBenefits } from "@/hooks/useUserBenefits";
@@ -43,6 +44,13 @@ const buildVerifySuccessUrl = ({
 
   return `${baseUrl}?${params.toString()}`;
 };
+
+type VerifyPaymentResponse = ApiResponseBody<{
+  message?: string;
+  orderId?: string;
+  subscriptionId?: string;
+  planName?: string;
+}>;
 
 function SuccessContent() {
   const locale = useLocale();
@@ -94,7 +102,7 @@ function SuccessContent() {
             "Accept-Language": (locale || DEFAULT_LOCALE) as string,
           },
         });
-        const result = await response.json();
+        const result = (await response.json()) as VerifyPaymentResponse;
         if (!response.ok) {
           throw new Error(result.error || "Verification failed.");
         }
@@ -102,6 +110,8 @@ function SuccessContent() {
         if (!result.success) {
           throw new Error(result.error || "Verification failed.");
         }
+
+        const data = result.data ?? {};
 
         confetti({
           particleCount: 120,
@@ -113,11 +123,11 @@ function SuccessContent() {
         setStatus("success");
         setPaymentData({
           message:
-            result.data.message ||
+            data.message ||
             "Your payment has been confirmed. Your plan has been updated.",
-          orderId: result.data.orderId,
-          subscriptionId: result.data.subscriptionId,
-          planName: result.data.planName,
+          orderId: data.orderId,
+          subscriptionId: data.subscriptionId,
+          planName: data.planName,
         });
         revalidateBenefits();
       } catch (error) {

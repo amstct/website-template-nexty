@@ -1,5 +1,6 @@
 "use client";
 
+import type { ApiResponseBody } from "@/lib/api-response";
 import { Button } from "@/components/ui/button";
 import { DEFAULT_LOCALE, useRouter } from "@/i18n/routing";
 import { pricingPlans as pricingPlansSchema } from "@/lib/db/schema";
@@ -78,7 +79,7 @@ export default function PricingCTA({ plan, localizedPlan }: Params) {
         body: JSON.stringify(requestBody),
       });
 
-      const result = await response.json();
+      const result = (await response.json()) as ApiResponseBody;
 
       if (!response.ok) {
         if (response.status === 401) {
