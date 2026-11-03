@@ -1,6 +1,6 @@
 import 'server-only'
 
-import { db } from '@/lib/db'
+import { db, isDatabaseEnabled } from '@/lib/db'
 import { sites } from '@/lib/db/schema'
 import { withTimeout } from '@/lib/timeout'
 import { eq } from 'drizzle-orm'
@@ -17,6 +17,10 @@ let siteIdFailureUntil = 0
  * Returns null when the database is unavailable instead of blocking callers.
  */
 export async function tryGetSiteId(): Promise<string | null> {
+  if (!isDatabaseEnabled) {
+    return null
+  }
+
   if (cachedSiteId) return cachedSiteId
 
   if (Date.now() < siteIdFailureUntil) {

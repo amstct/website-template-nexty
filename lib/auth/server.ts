@@ -1,7 +1,6 @@
 import 'server-only';
 
-import { auth } from "@/lib/auth";
-import { db } from '@/lib/db';
+import { db, isDatabaseEnabled } from '@/lib/db';
 import { tryGetSiteId, getSiteId } from '@/lib/db/site-context';
 import { user as userSchema } from '@/lib/db/schema';
 import { withTimeout } from '@/lib/timeout';
@@ -13,10 +12,17 @@ const SESSION_LOOKUP_TIMEOUT_MS = 3000;
 
 export const getSession = async () => {
   try {
+    if (!isDatabaseEnabled) {
+      return null;
+    }
+
     const siteId = await tryGetSiteId();
     if (!siteId) {
       return null;
     }
+
+    // Lazy-load auth so frontend-only mode does not require BETTER_AUTH_SECRET
+    const { auth } = await import("@/lib/auth");
 
     return await withTimeout(
       auth.api.getSession({ headers: await headers() }),
